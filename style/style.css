@@ -1,0 +1,316 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ :root {
+    --cell-size: 150px;
+    --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+    height: 80vh;
+    width: 100vw;
+    background: rgb(214, 212, 160);
+    /* padding-bottom: 20%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Lobster', cursive;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 7%;
+    text-transform: uppercase;
+    color: rgba(1, 169, 211, 1);
+}
+
+.settings {
+    font-size: 2rem;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.levelSelector,
+.modeSelector {
+    height: 60px;
+    width: 150px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    padding: 5px;
+    border: 1px solid rgb(149, 94, 66);
+    box-shadow: 5px 5px rgb(149, 94, 66);
+    cursor: pointer;
+}
+
+.modeSelector {
+    animation: littleBig 3s;
+    -webkit-animation: littleBig 3s;
+}
+
+.levelSelector:hover,
+.modeSelector:hover {
+    scale: 1.1;
+    background: rgba(1, 169, 211, 0.6);
+    color: white;
+}
+
+.levelSelector {
+    opacity: 0%;
+}
+
+.gameBoard {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(149, 94, 66);
+    cursor: pointer;
+}
+
+.cell:first-of-type,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell.cross,
+.cell.circle {
+    cursor: not-allowed;
+}
+
+.cell.cross::before,
+.cell.cross::after,
+.gameBoard.cross .cell:not(.circle):not(.cross):hover::before,
+.gameBoard.cross .cell:not(.circle):not(.cross):hover::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: rgba(1, 169, 211, 1);
+}
+
+.cell.cross::before,
+.gameBoard.cross .cell:not(.circle):not(.cross):hover::before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+.cell.cross::after,
+.gameBoard.cross .cell:not(.circle):not(.cross):hover::after {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.gameBoard.circle .cell:not(.circle):not(.cross):hover::before,
+.gameBoard.circle .cell:not(.circle):not(.cross):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.cell.circle::before,
+.gameBoard.circle .cell:not(.circle):not(.cross):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: rgb(1, 169, 211);
+}
+
+.cell.circle::after,
+.gameBoard.circle .cell:not(.circle):not(.cross):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: rgb(214, 212, 160);
+}
+
+.gameBoard.cross .cell:not(.circle):not(.cross):hover::before,
+.gameBoard.cross .cell:not(.circle):not(.cross):hover::after,
+.gameBoard.circle .cell:not(.circle):not(.cross):hover::before {
+    background-color: rgba(1, 169, 211, .3);
+}
+
+.endGameScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(10, 205, 255, .6);
+    display: none;
+}
+
+.endGameScreen div {
+    font-size: 3rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+#restartButton {
+    margin: 20px;
+    font-size: 2em;
+    background-color: rgb(214, 212, 160);
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#restartButton:hover {
+    scale: 1.1;
+}
+
+.endGameScreen.show {
+    display: flex;
+}
+
+@keyframes littleBig {
+    0% {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+    }
+    25% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+    }
+    75% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+    }
+}
+
+@media screen and (max-height:990px) {
+     :root {
+        --cell-size: 115px;
+        --mark-size: calc(var(--cell-size) * .9);
+    }
+    .cell {
+        width: var(--cell-size);
+        height: var(--cell-size);
+    }
+    .cell.cross::before,
+    .cell.cross::after,
+    .gameBoard.cross .cell:not(.circle):not(.cross):hover::before,
+    .gameBoard.cross .cell:not(.circle):not(.cross):hover::after {
+        width: calc(var(--mark-size) * .15);
+        height: var(--mark-size);
+    }
+    .cell.circle::before,
+    .gameBoard.circle .cell:not(.circle):not(.cross):hover::before {
+        width: var(--mark-size);
+        height: var(--mark-size);
+    }
+    .cell.circle::after,
+    .gameBoard.circle .cell:not(.circle):not(.cross):hover::after {
+        width: calc(var(--mark-size) * .7);
+        height: calc(var(--mark-size) * .7);
+    }
+    .levelSelector,
+    .modeSelector {
+        margin: 5px;
+    }
+    h1 {
+        margin-top: 0;
+        font-size: 3rem;
+    }
+    .settings {
+        font-size: 1.7rem;
+    }
+    .endGameScreen div {
+        font-size: 2rem;
+    }
+    #restartButton {
+        font-size: 1.7rem;
+    }
+    .infoMessage {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-height: 675px) {
+    body {
+        height: 90vh;
+    }
+}
