@@ -2,4 +2,4 @@
 
 A Tic-tac-toe game that implements the minimax algortihm
 
-play at:  https://alxbrla.github.io/snakeJS/
+play at:  https://alxbrla.github.io/tictactoe/
