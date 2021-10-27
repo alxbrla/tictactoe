@@ -6,22 +6,23 @@
     box-sizing: border-box;
 }
 
- :root {
+:root {
     --cell-size: 150px;
-    --mark-size: calc(var(--cell-size) * .9);
+    --mark-size: calc(var(--cell-size) * 0.9);
 }
 
 body {
     height: 80vh;
     width: 100vw;
-    background: rgb(214, 212, 160);
+    /* background: rgb(214, 212, 160); */
+    background: rgb(235, 227, 0);
     /* padding-bottom: 20%; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Lobster', cursive;
+    font-family: "Lobster", cursive;
 }
 
 h1 {
@@ -123,9 +124,9 @@ h1 {
 .cell.cross::after,
 .gameBoard.cross .cell:not(.circle):not(.cross):hover::before,
 .gameBoard.cross .cell:not(.circle):not(.cross):hover::after {
-    content: '';
+    content: "";
     position: absolute;
-    width: calc(var(--mark-size) * .15);
+    width: calc(var(--mark-size) * 0.15);
     height: var(--mark-size);
     background-color: rgba(1, 169, 211, 1);
 }
@@ -152,7 +153,7 @@ h1 {
 .cell.circle::after,
 .gameBoard.circle .cell:not(.circle):not(.cross):hover::before,
 .gameBoard.circle .cell:not(.circle):not(.cross):hover::after {
-    content: '';
+    content: "";
     position: absolute;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -170,15 +171,15 @@ h1 {
 
 .cell.circle::after,
 .gameBoard.circle .cell:not(.circle):not(.cross):hover::after {
-    width: calc(var(--mark-size) * .7);
-    height: calc(var(--mark-size) * .7);
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
     background-color: rgb(214, 212, 160);
 }
 
 .gameBoard.cross .cell:not(.circle):not(.cross):hover::before,
 .gameBoard.cross .cell:not(.circle):not(.cross):hover::after,
 .gameBoard.circle .cell:not(.circle):not(.cross):hover::before {
-    background-color: rgba(1, 169, 211, .3);
+    background-color: rgba(1, 169, 211, 0.3);
 }
 
 .endGameScreen {
@@ -192,7 +193,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(10, 205, 255, .6);
+    background-color: rgba(10, 205, 255, 0.6);
     display: none;
 }
 
@@ -261,10 +262,10 @@ h1 {
     }
 }
 
-@media screen and (max-height:990px) {
-     :root {
+@media screen and (max-height: 990px) {
+    :root {
         --cell-size: 115px;
-        --mark-size: calc(var(--cell-size) * .9);
+        --mark-size: calc(var(--cell-size) * 0.9);
     }
     .cell {
         width: var(--cell-size);
@@ -274,7 +275,7 @@ h1 {
     .cell.cross::after,
     .gameBoard.cross .cell:not(.circle):not(.cross):hover::before,
     .gameBoard.cross .cell:not(.circle):not(.cross):hover::after {
-        width: calc(var(--mark-size) * .15);
+        width: calc(var(--mark-size) * 0.15);
         height: var(--mark-size);
     }
     .cell.circle::before,
@@ -284,8 +285,8 @@ h1 {
     }
     .cell.circle::after,
     .gameBoard.circle .cell:not(.circle):not(.cross):hover::after {
-        width: calc(var(--mark-size) * .7);
-        height: calc(var(--mark-size) * .7);
+        width: calc(var(--mark-size) * 0.7);
+        height: calc(var(--mark-size) * 0.7);
     }
     .levelSelector,
     .modeSelector {
